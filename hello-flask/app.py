@@ -13,6 +13,10 @@ def baseball():
 def naver():
     return render_template('naver.html')
 
+@app.route('/youtube')
+def youtube():
+    return render_template('youtube.html')
+
 @app.route('/method', methods=['GET', 'POST'])
 def method():
     if request.method == 'GET':
