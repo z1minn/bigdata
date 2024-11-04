@@ -13,9 +13,23 @@ def baseball():
 def naver():
     return render_template('naver.html')
 
-@app.route('/youtube')
+@app.route('/youtube', methods=['GET', 'POST'])
 def youtube():
-    return render_template('youtube.html')
+    linklist = ['https://www.youtube.com/embed/S7UW5NfKLAQ?si=e5gq7tSrGipXKbV9', 'https://www.youtube.com/embed/Ve3_XoThvS4?si=3YonH3caT25z8swA']
+    keyword = request.form["keyword"]
+    print(keyword)
+    linknum = 0 # 0은 토트넘, 1은 첼시
+    if keyword == '토트넘':
+        linknum = 0
+    elif keyword == '첼시':
+        linknum = 1
+    else:
+        print('잘못된 입력') 
+    return render_template('youtube.html', name=keyword, link=linklist[linknum])
+
+@app.route('/ytpage')
+def ytpage():
+    return render_template('ytpage.html')
 
 @app.route('/method', methods=['GET', 'POST'])
 def method():
